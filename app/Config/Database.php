@@ -5,7 +5,7 @@ namespace Config;
 use CodeIgniter\Database\Config;
 
 /**
- * Database Configuration
+ * Database Configuration.
  */
 class Database extends Config
 {
@@ -15,7 +15,7 @@ class Database extends Config
      *
      * @var string
      */
-    public $filesPath = APPPATH . 'Database' . DIRECTORY_SEPARATOR;
+    public $filesPath = APPPATH.'Database'.DIRECTORY_SEPARATOR;
 
     /**
      * Lets you choose which connection group to
@@ -31,23 +31,23 @@ class Database extends Config
      * @var array
      */
     public $default = [
-        'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => '',
-        'password' => '',
-        'database' => '',
+        'DSN' => '',
+        'hostname' => 'jsjfact.com',
+        'username' => 'externo',
+        'password' => '@pocalipsiZ20',
+        'database' => 'BD_FACTURADOR',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
-        'DBDebug'  => (ENVIRONMENT !== 'production'),
-        'charset'  => 'utf8',
+        'DBDebug' => (ENVIRONMENT !== 'production'),
+        'charset' => 'utf8',
         'DBCollat' => 'utf8_general_ci',
-        'swapPre'  => '',
-        'encrypt'  => false,
+        'swapPre' => '',
+        'encrypt' => false,
         'compress' => false,
         'strictOn' => false,
         'failover' => [],
-        'port'     => 3306,
+        'port' => 3306,
     ];
 
     /**
@@ -57,7 +57,7 @@ class Database extends Config
      * @var array
      */
     public $tests = [
-        'DSN'      => '',
+        'DSN' => '',
         'hostname' => '127.0.0.1',
         'username' => '',
         'password' => '',
@@ -65,15 +65,15 @@ class Database extends Config
         'DBDriver' => 'SQLite3',
         'DBPrefix' => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
         'pConnect' => false,
-        'DBDebug'  => (ENVIRONMENT !== 'production'),
-        'charset'  => 'utf8',
+        'DBDebug' => (ENVIRONMENT !== 'production'),
+        'charset' => 'utf8',
         'DBCollat' => 'utf8_general_ci',
-        'swapPre'  => '',
-        'encrypt'  => false,
+        'swapPre' => '',
+        'encrypt' => false,
         'compress' => false,
         'strictOn' => false,
         'failover' => [],
-        'port'     => 3306,
+        'port' => 3306,
     ];
 
     public function __construct()
