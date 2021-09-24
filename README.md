@@ -1,4 +1,4 @@
-# CodeIgniter 4 Framework
+# CodeIgniter 4 Framework developer Sergio Zegarra
 
 ## What is CodeIgniter?
 
