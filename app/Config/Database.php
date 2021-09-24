@@ -32,10 +32,10 @@ class Database extends Config
      */
     public $default = [
         'DSN' => '',
-        'hostname' => 'jsjfact.com',
-        'username' => 'externo',
-        'password' => '@pocalipsiZ20',
-        'database' => 'BD_FACTURADOR',
+        'hostname' => 'localhost',
+        'username' => '',
+        'password' => '',
+        'database' => '',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
