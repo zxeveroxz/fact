@@ -9,7 +9,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Base Site URL
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * URL to your CodeIgniter root. Typically this will be your base URL,
      * WITH a trailing slash:
@@ -23,12 +23,12 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost:8080/';
+    public $baseURL = 'http://fact.local/';
 
     /**
      * --------------------------------------------------------------------------
      * Index File
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Typically this will be your index.php file, unless you've renamed it to
      * something else. If you are using mod_rewrite to remove the page set this
@@ -36,12 +36,12 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $indexPage = 'index.php';
+    public $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------
      * URI PROTOCOL
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * This item determines which getServer global should be used to retrieve the
      * URI string.  The default setting of 'REQUEST_URI' works for most servers.
@@ -60,7 +60,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Default Locale
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The Locale roughly represents the language and location that your visitor
      * is viewing the site from. It affects the language strings and other
@@ -74,7 +74,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Negotiate Locale
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * If true, the current Request object will automatically determine the
      * language to use based on the value of the Accept-Language header.
@@ -88,7 +88,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Supported Locales
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * If $negotiateLocale is true, this array lists the locales supported
      * by the application in descending order of priority. If no match is
@@ -101,19 +101,19 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Application Timezone
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The default timezone that will be used in your application to display
      * dates with the date helper, and can be retrieved through app_timezone()
      *
      * @var string
      */
-    public $appTimezone = 'America/Chicago';
+    public $appTimezone = 'America/Lima';
 
     /**
      * --------------------------------------------------------------------------
      * Default Character Set
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * This determines which character set is used by default in various methods
      * that require a character set to be provided.
@@ -127,7 +127,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * URI PROTOCOL
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * If true, this will force every request made to this application to be
      * made via a secure connection (HTTPS). If the incoming request is not
@@ -141,7 +141,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Session Driver
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The session storage driver to use:
      * - `CodeIgniter\Session\Handlers\FileHandler`
@@ -156,7 +156,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Session Cookie Name
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The session cookie name, must contain only [0-9a-z_-] characters
      *
@@ -167,7 +167,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Session Expiration
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The number of SECONDS you want the session to last.
      * Setting to 0 (zero) means expire when the browser is closed.
@@ -179,7 +179,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Session Save Path
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The location to save sessions to and is driver dependent.
      *
@@ -193,12 +193,12 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $sessionSavePath = WRITEPATH . 'session';
+    public $sessionSavePath = WRITEPATH.'session';
 
     /**
      * --------------------------------------------------------------------------
      * Session Match IP
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Whether to match the user's IP address when reading the session data.
      *
@@ -212,7 +212,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Session Time to Update
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * How many seconds between CI regenerating the session ID.
      *
@@ -223,7 +223,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Session Regenerate Destroy
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Whether to destroy session data associated with the old session ID
      * when auto-regenerating the session ID. When set to FALSE, the data
@@ -236,72 +236,72 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Cookie Prefix
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Set a cookie name prefix if you need to avoid collisions.
      *
      * @var string
      *
-     * @deprecated use Config\Cookie::$prefix property instead.
+     * @deprecated use Config\Cookie::$prefix property instead
      */
     public $cookiePrefix = '';
 
     /**
      * --------------------------------------------------------------------------
      * Cookie Domain
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Set to `.your-domain.com` for site-wide cookies.
      *
      * @var string
      *
-     * @deprecated use Config\Cookie::$domain property instead.
+     * @deprecated use Config\Cookie::$domain property instead
      */
     public $cookieDomain = '';
 
     /**
      * --------------------------------------------------------------------------
      * Cookie Path
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Typically will be a forward slash.
      *
      * @var string
      *
-     * @deprecated use Config\Cookie::$path property instead.
+     * @deprecated use Config\Cookie::$path property instead
      */
     public $cookiePath = '/';
 
     /**
      * --------------------------------------------------------------------------
      * Cookie Secure
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Cookie will only be set if a secure HTTPS connection exists.
      *
      * @var bool
      *
-     * @deprecated use Config\Cookie::$secure property instead.
+     * @deprecated use Config\Cookie::$secure property instead
      */
     public $cookieSecure = false;
 
     /**
      * --------------------------------------------------------------------------
      * Cookie HttpOnly
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Cookie will only be accessible via HTTP(S) (no JavaScript).
      *
      * @var bool
      *
-     * @deprecated use Config\Cookie::$httponly property instead.
+     * @deprecated use Config\Cookie::$httponly property instead
      */
     public $cookieHTTPOnly = true;
 
     /**
      * --------------------------------------------------------------------------
      * Cookie SameSite
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Configure cookie SameSite setting. Allowed values are:
      * - None
@@ -320,14 +320,14 @@ class App extends BaseConfig
      *
      * @var string
      *
-     * @deprecated use Config\Cookie::$samesite property instead.
+     * @deprecated use Config\Cookie::$samesite property instead
      */
     public $cookieSameSite = 'Lax';
 
     /**
      * --------------------------------------------------------------------------
      * Reverse Proxy IPs
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * If your server is behind a reverse proxy, you must whitelist the proxy
      * IP addresses from which CodeIgniter should trust headers such as
@@ -347,11 +347,11 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Token Name
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The token name.
      *
-     * @deprecated Use `Config\Security` $tokenName property instead of using this property.
+     * @deprecated use `Config\Security` $tokenName property instead of using this property
      *
      * @var string
      */
@@ -360,11 +360,11 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Header Name
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The header name.
      *
-     * @deprecated Use `Config\Security` $headerName property instead of using this property.
+     * @deprecated use `Config\Security` $headerName property instead of using this property
      *
      * @var string
      */
@@ -373,11 +373,11 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Cookie Name
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The cookie name.
      *
-     * @deprecated Use `Config\Security` $cookieName property instead of using this property.
+     * @deprecated use `Config\Security` $cookieName property instead of using this property
      *
      * @var string
      */
@@ -386,11 +386,11 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Expire
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * The number in seconds the token should expire.
      *
-     * @deprecated Use `Config\Security` $expire property instead of using this property.
+     * @deprecated use `Config\Security` $expire property instead of using this property
      *
      * @var int
      */
@@ -399,11 +399,11 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Regenerate
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Regenerate token on every submission?
      *
-     * @deprecated Use `Config\Security` $regenerate property instead of using this property.
+     * @deprecated use `Config\Security` $regenerate property instead of using this property
      *
      * @var bool
      */
@@ -412,11 +412,11 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF Redirect
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Redirect to previous page with error on failure?
      *
-     * @deprecated Use `Config\Security` $redirect property instead of using this property.
+     * @deprecated use `Config\Security` $redirect property instead of using this property
      *
      * @var bool
      */
@@ -425,7 +425,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * CSRF SameSite
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Setting for CSRF SameSite cookie token. Allowed values are:
      * - None
@@ -436,7 +436,7 @@ class App extends BaseConfig
      * Defaults to `Lax` as recommended in this link:
      *
      * @see https://portswigger.net/web-security/csrf/samesite-cookies
-     * @deprecated Use `Config\Security` $samesite property instead of using this property.
+     * @deprecated use `Config\Security` $samesite property instead of using this property
      *
      * @var string
      */
@@ -445,7 +445,7 @@ class App extends BaseConfig
     /**
      * --------------------------------------------------------------------------
      * Content Security Policy
-     * --------------------------------------------------------------------------
+     * --------------------------------------------------------------------------.
      *
      * Enables the Response's Content Secure Policy to restrict the sources that
      * can be used for images, scripts, CSS files, audio, video, etc. If enabled,

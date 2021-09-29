@@ -10,7 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 /**
- * Class BaseController
+ * Class BaseController.
  *
  * BaseController provides a convenient place for loading components
  * and performing functions that are needed by all your controllers.
@@ -35,7 +35,7 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['form', 'cookie'];
 
     /**
      * Constructor.
@@ -47,6 +47,7 @@ class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
 
-        // E.g.: $this->session = \Config\Services::session();
+        $this->session = \Config\Services::session();
+        $this->db = \Config\Database::connect();
     }
 }
