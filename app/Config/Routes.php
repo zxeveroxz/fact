@@ -44,6 +44,10 @@ $routes->group('home', ['filter' => 'myauth'], function ($routes) {
     $routes->add('index2', 'Home::index2');
 });
 
+$routes->group('u', ['filter' => 'myauth'], function ($routes) {
+    $routes->add('c', 'Usuario::configuracion');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

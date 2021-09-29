@@ -33,13 +33,9 @@ class Login extends BaseController
             $ses_data = [
                 'IDX' => $RU->idx,
                 'TIENE_ACCESO' => true,
-                'RUC' => $RU->ruc,
-                'RAZ' => $RU->raz,
-                'USU' => $RU->usu,
-                'NIV' => $RU->niv,
+                'RUC' => $inputRUC,
+                'USU' => $inputUser,
                 'NOM' => $RU->nom,
-                'ANE' => $RU->anexos,
-                'TOK' => $RU->token,
             ];
             $this->session->set($ses_data);
 

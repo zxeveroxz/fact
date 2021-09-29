@@ -65,7 +65,7 @@
          <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="<?=base_url('js/scripts.js'); ?>"></script>
     </body>
 </html>
 <script>
@@ -104,10 +104,12 @@ $('#inputUser').val(getCookie('usu_recuerdo'));
 $(document).ready( function() { // Wait until document is fully parsed
 
     if(getCookie('ruc_recuerdo')!="" || getCookie('usu_recuerdo')!="")
-        $("#inputRecordar").prop('checked',true);
+        $("#inputRecordar").
+        prop('checked',true);
 
-  $("#envio").click(function(e){
+    $("#login").submit(function(e){
         e.preventDefault();
+
         if($("#inputRecordar").prop('checked')){
             setCookie("ruc_recuerdo",$("#inputRUC").val(),1);
             setCookie("usu_recuerdo",$("#inputUser").val(),1);
@@ -116,6 +118,11 @@ $(document).ready( function() { // Wait until document is fully parsed
             deleteCookie("usu_recuerdo");
         }
 
+        e.currentTarget.submit();
+    });
+
+  $("#envio").click(function(e){
+        //e.preventDefault();        
         $("#login").submit();
   });
 })
