@@ -2,12 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\Usuario_model;
+
 class Usuario extends BaseController
 {
-    public function __construct()
-    {
-    }
-
     public function index()
     {
         $data = [];
@@ -17,14 +15,29 @@ class Usuario extends BaseController
     public function configuracion()
     {
         $data = [];
+        $USUARIO = new Usuario_model();
+        $datos = $USUARIO->find(session()->get('idx'));
+        if (!$datos) {
+            echo Ayuda_link_atras();
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Usuario NO Encontrado');
+        }
 
+        $data['datos'] = $datos[0];
         echo view('includes/header');
-        echo view('usuario/configuracion');
-        echo view('includes/footer', $data);
+        echo view('usuario/configuracion', $data);
+        //echo view('includes/footer', $data);
     }
 
     public function actualizar()
     {
-        print_r($this->request->getPost());
+        $usuario = new Usuario_model();
+        $r = $usuario->save($this->request->getPost());
+        if ($r) {
+            $this->session->setFlashdata('ok', 'Datos Actualizados');
+        } else {
+            $this->session->setFlashdata('error', 'Verifique los datos de acceso...');
+        }
+
+        return redirect()->back();
     }
 }
