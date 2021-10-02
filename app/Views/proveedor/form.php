@@ -19,8 +19,7 @@
                     <div class="col-sm-5">
                         <div class="input-group">
                             <input type="text" class="form-control" id="nro" name="nro" required>
-                            <button class="btn btn-success" type="button"
-                                id="button-addon2">Consultar</button>
+                            <button class="btn btn-success" type="button" id="buscar_ruc">Consultar</button>
                         </div>
                     </div>
                     <label for="giro" class="col-sm-2 col-form-label text-end">Giro:</label>
@@ -104,8 +103,44 @@
 </main>
 
 <?=$this->include('includes/footer'); ?>
+
 <script>
- 
+    const TOKEN_NAME ="<?= csrf_token(); ?>";
+    const TOKEN_KEY ="?= csrf_hash() ?>";
+
+
+
+$("#buscar_ruc").on("click", async function() {
+    
+    let nro = $("#nro").val();
+
+    if(nro.lenght!=11){
+        bootbox.alert({message:"Solo consulta de RUC con 11 Digitos", closeButton: false});        
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append(TOKEN_NAME, TOKEN_KEY);
+
+    await fetch(`<?=base_url('apis/buscar_ruc'); ?>/${nro}`, {
+            method: 'POST',
+            body: formData
+        })
+        .then((response) => {
+            if (response.status === 403) {
+                window.parent.location.href = "/";
+            } else {
+                console.log("Exportacion actualizada");
+                /*$('#table1').bootstrapTable('refresh',{silent: true});*/
+            }
+        })
+        .catch((e) => {
+            bootbox.alert({message:"Se produjo un error, favor de refrescar la pagina o vuelva a ingresar", closeButton: false});
+            console.log(e);
+        });
+});
+
+
 
 $(function() {
     function llenar(datos) {
@@ -114,27 +149,6 @@ $(function() {
         });
     }
 
-    llenar(<?=json_encode($datos); ?>);
-
-    
-    $("#buscar_ruc").on("click",function(){
-        let formData = new FormData();
-        formData.append(TOKEN_NAME,TOKEN_KEY);   
-
-        await fetch(`<?=base_url('apis/buscar_ruc'); ?>`,{method:'POST',body:formData})
-        .then((response)=>{
-            if(response.status===403){
-                window.parent.location.href="/facturador/";      
-            }else{
-                console.log("Exportacion actualizada");
-                $('#table1').bootstrapTable('refresh',{silent: true});
-            }            
-        })
-        .catch((e)=>{
-            bootbox.alert("Se produjo un error, favor de refrescar la pagina o vuelva a ingresar");
-            console.log(e);             
-        }); 
-    });
-
+    llenar(<?=json_encode($datos ?? []); ?>);
 });
 </script>
