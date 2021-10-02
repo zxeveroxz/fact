@@ -71,24 +71,14 @@ td {
 <!-- Latest compiled and minified Locales -->
 <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/locale/bootstrap-table-es-MX.min.js"></script>
 <script>
-// abrir modal de lista de productos total
-    function listar_productos(){
-        
-        var myModal = new bootstrap.Modal($('#exampleModal'), { keyboard: false,url:"<?=base_url(); ?>"});        
-        myModal.show();
-
-    }
-
-
 
   function queryParams(params) {
     params.campo = $("#campo").val();
     params.valor = $("#valor").val();
-    return params
+    return params;
   }
 
 function borrarFormatter(value, row, index) {
-    //console.log(value);
     return `<a href="<?=base_url('categoria/form/editar'); ?>/${row.idx}" data-idx="${row.idx}">Editar</a>`;
 }
 $(function() {
@@ -99,7 +89,7 @@ $(function() {
     });
 
     $("#buscar").click(function () {
-      $("#table").bootstrapTable('refresh')
+      $("#table").bootstrapTable('refresh');
     });
 
        

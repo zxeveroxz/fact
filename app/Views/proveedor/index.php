@@ -70,11 +70,11 @@ td {
   function queryParams(params) {
     params.campo = $("#campo").val();
     params.valor = $("#valor").val();
-    return params
+    return params;
   }
 
 function link_editar(value, row, index) {
-    //console.log(value);
+    /* console.log(value);*/
     return `<a href="<?=base_url('proveedor/form/editar'); ?>/${row.idx}" data-idx="${row.idx}">Editar</a>`;
 }
 $(function() {
