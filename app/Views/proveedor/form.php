@@ -85,7 +85,7 @@
                 <div class="form-group row ">
 
                     <div class="col-6 col-sm-6 text-left">
-                        <button id="cancelar" type="button" class="btn  btn-danger ">Cancelar</button>
+                        <button id="cancelar" type="reset" class="btn  btn-danger ">Cancelar</button>
                     </div>
 
                     <div class="col-6 col-sm-6 ">
@@ -105,19 +105,19 @@
 <?=$this->include('includes/footer'); ?>
 
 <script>
-    const TOKEN_NAME ="<?= csrf_token(); ?>";
-    const TOKEN_KEY ="?= csrf_hash() ?>";
+    const TOKEN_NAME ="<?=csrf_token(); ?>";
+    const TOKEN_KEY ="<?=csrf_hash(); ?>";
 
 
 
-$("#buscar_ruc").on("click", async function() {
-    
+$("#buscar_ruc").on("click", async function() {    
     let nro = $("#nro").val();
-
-    if(nro.lenght!=11){
+    if(nro.length !=11){
         bootbox.alert({message:"Solo consulta de RUC con 11 Digitos", closeButton: false});        
         return;
     }
+
+    $(this).text('Consultando').attr('disabled',true);
 
     let formData = new FormData();
     formData.append(TOKEN_NAME, TOKEN_KEY);
@@ -126,18 +126,20 @@ $("#buscar_ruc").on("click", async function() {
             method: 'POST',
             body: formData
         })
-        .then((response) => {
-            if (response.status === 403) {
-                window.parent.location.href = "/";
-            } else {
-                console.log("Exportacion actualizada");
-                /*$('#table1').bootstrapTable('refresh',{silent: true});*/
+        .then(response => {return response.json();})
+        .then(data => {
+            if(data.resp){
+                $("#nom").val(data.raz.trim());
+                $("#direccion").val(data.dir.trim());
+            }else{
+                bootbox.alert("<a style='color: red'>Error en realizar la consulta...</a>");
             }
         })
         .catch((e) => {
-            bootbox.alert({message:"Se produjo un error, favor de refrescar la pagina o vuelva a ingresar", closeButton: false});
-            console.log(e);
+            bootbox.alert({message:"Se produjo un error, favor de refrescar la pagina o vuelva a ingresar", closeButton: false});            
         });
+
+        $(this).text('Buscar').attr('disabled',false);
 });
 
 

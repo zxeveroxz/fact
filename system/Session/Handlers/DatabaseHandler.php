@@ -18,7 +18,7 @@ use Config\Database;
 use ReturnTypeWillChange;
 
 /**
- * Session handler using current Database for storage
+ * Session handler using current Database for storage.
  */
 class DatabaseHandler extends BaseHandler
 {
@@ -51,7 +51,7 @@ class DatabaseHandler extends BaseHandler
     protected $platform;
 
     /**
-     * Row exists flag
+     * Row exists flag.
      *
      * @var bool
      */
@@ -106,7 +106,7 @@ class DatabaseHandler extends BaseHandler
      * @return false|string Returns an encoded string of the read data.
      *                      If nothing was read, it must return false.
      */
-    #[ReturnTypeWillChange]
+    //[ReturnTypeWillChange]
     public function read($id)
     {
         if ($this->lockSession($id) === false) {
@@ -115,7 +115,7 @@ class DatabaseHandler extends BaseHandler
             return '';
         }
 
-        if (! isset($this->sessionID)) {
+        if (!isset($this->sessionID)) {
             $this->sessionID = $id;
         }
 
@@ -133,7 +133,7 @@ class DatabaseHandler extends BaseHandler
             // PHP7 will reuse the same SessionHandler object after
             // ID regeneration, so we need to explicitly set this to
             // FALSE instead of relying on the default ...
-            $this->rowExists   = false;
+            $this->rowExists = false;
             $this->fingerprint = md5('');
 
             return '';
@@ -146,7 +146,7 @@ class DatabaseHandler extends BaseHandler
         }
 
         $this->fingerprint = md5($result);
-        $this->rowExists   = true;
+        $this->rowExists = true;
 
         return $result;
     }
@@ -170,18 +170,18 @@ class DatabaseHandler extends BaseHandler
 
         if ($this->rowExists === false) {
             $insertData = [
-                'id'         => $id,
+                'id' => $id,
                 'ip_address' => $this->ipAddress,
-                'timestamp'  => 'now()',
-                'data'       => $this->platform === 'postgre' ? '\x' . bin2hex($data) : $data,
+                'timestamp' => date('Y-m-d H:i:s'), //'now()',
+                'data' => $this->platform === 'postgre' ? '\x'.bin2hex($data) : $data,
             ];
 
-            if (! $this->db->table($this->table)->insert($insertData)) {
+            if (!$this->db->table($this->table)->insert($insertData)) {
                 return $this->fail();
             }
 
             $this->fingerprint = md5($data);
-            $this->rowExists   = true;
+            $this->rowExists = true;
 
             return true;
         }
@@ -192,13 +192,13 @@ class DatabaseHandler extends BaseHandler
             $builder = $builder->where('ip_address', $this->ipAddress);
         }
 
-        $updateData = ['timestamp' => 'now()'];
+        $updateData = ['timestamp' => date('Y-m-d H:i:s')]; //'now()'
 
         if ($this->fingerprint !== md5($data)) {
-            $updateData['data'] = ($this->platform === 'postgre') ? '\x' . bin2hex($data) : $data;
+            $updateData['data'] = ($this->platform === 'postgre') ? '\x'.bin2hex($data) : $data;
         }
 
-        if (! $builder->update($updateData)) {
+        if (!$builder->update($updateData)) {
             return $this->fail();
         }
 
@@ -212,11 +212,11 @@ class DatabaseHandler extends BaseHandler
      */
     public function close(): bool
     {
-        return ($this->lock && ! $this->releaseLock()) ? $this->fail() : true;
+        return ($this->lock && !$this->releaseLock()) ? $this->fail() : true;
     }
 
     /**
-     * Destroys a session
+     * Destroys a session.
      *
      * @param string $id The session ID being destroyed
      */
@@ -229,7 +229,7 @@ class DatabaseHandler extends BaseHandler
                 $builder = $builder->where('ip_address', $this->ipAddress);
             }
 
-            if (! $builder->delete()) {
+            if (!$builder->delete()) {
                 return $this->fail();
             }
         }
@@ -246,16 +246,16 @@ class DatabaseHandler extends BaseHandler
     /**
      * Cleans up expired sessions.
      *
-     * @param int $max_lifetime Sessions that have not updated
-     *                          for the last max_lifetime seconds will be removed.
+     * @param int $max_lifetime sessions that have not updated
+     *                          for the last max_lifetime seconds will be removed
      *
-     * @return false|int Returns the number of deleted sessions on success, or false on failure.
+     * @return false|int returns the number of deleted sessions on success, or false on failure
      */
-    #[ReturnTypeWillChange]
+    //[ReturnTypeWillChange]
     public function gc($max_lifetime)
     {
         $separator = $this->platform === 'postgre' ? '\'' : ' ';
-        $interval  = implode($separator, ['', "{$max_lifetime} second", '']);
+        $interval = implode($separator, ['', "{$max_lifetime} second", '']);
 
         return $this->db->table($this->table)->delete("timestamp < now() - INTERVAL {$interval}") ? 1 : $this->fail();
     }
@@ -266,7 +266,7 @@ class DatabaseHandler extends BaseHandler
     protected function lockSession(string $sessionID): bool
     {
         if ($this->platform === 'mysql') {
-            $arg = md5($sessionID . ($this->matchIP ? '_' . $this->ipAddress : ''));
+            $arg = md5($sessionID.($this->matchIP ? '_'.$this->ipAddress : ''));
             if ($this->db->query("SELECT GET_LOCK('{$arg}', 300) AS ci_session_lock")->getRow()->ci_session_lock) {
                 $this->lock = $arg;
 
@@ -277,7 +277,7 @@ class DatabaseHandler extends BaseHandler
         }
 
         if ($this->platform === 'postgre') {
-            $arg = "hashtext('{$sessionID}')" . ($this->matchIP ? ", hashtext('{$this->ipAddress}')" : '');
+            $arg = "hashtext('{$sessionID}')".($this->matchIP ? ", hashtext('{$this->ipAddress}')" : '');
             if ($this->db->simpleQuery("SELECT pg_advisory_lock({$arg})")) {
                 $this->lock = $arg;
 
@@ -296,7 +296,7 @@ class DatabaseHandler extends BaseHandler
      */
     protected function releaseLock(): bool
     {
-        if (! $this->lock) {
+        if (!$this->lock) {
             return true;
         }
 
