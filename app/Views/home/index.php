@@ -8,7 +8,7 @@
             
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4 py-0">
-                    <div class="card-body"><h2><span class="badge bg-dark">0154</span> PRODUCTOS</h2></div>
+                    <div class="card-body"><h2> PRODUCTOS</h2></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -17,7 +17,7 @@
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-body"><h2><span class="badge bg-dark">0154</span> CLIENTES</h2></div>
+                    <div class="card-body"><h2>CLIENTES</h2></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-body"><h2><span class="badge bg-dark">0154</span> TIENDAS</h2></div>
+                    <div class="card-body"><h2>TIENDAS</h2></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -35,7 +35,7 @@
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-body"><h2><span class="badge bg-dark">0154</span> VENDEDORES</h2></div>
+                    <div class="card-body"><h2>VENDEDORES</h2></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
